@@ -5,7 +5,7 @@ $(document).ready(function(){
      var body="";
      $.each($('#register_form').serializeArray(),function(i,elem){
         body += elem["name"] +": ";
-        body += elem["value"] + " ";
+        body += elem["value"] + "%0D";
      });
      var href=mail_to+"?subject="+subject+"&body="+body;
      $('#register_btn').attr('href',href);
