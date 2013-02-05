@@ -1,6 +1,7 @@
 $(document).ready(function () {
-    var app = Sammy('#main', function () {
-        this.use(Sammy.Mustache);
+    var app = Sammy('body', function () {
+//        this.use(Sammy.Mustache);
+        
         this.get('#/login', function () {
             loadPage('login.html');
         });
