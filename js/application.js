@@ -1,7 +1,5 @@
 $(document).ready(function () {
     var app = Sammy('body', function () {
-//        this.use(Sammy.Mustache);
-        
         this.get('#/login', function () {
             loadPage('login.html');
         });
@@ -45,5 +43,11 @@ function getTemplate(name) {
     $.get("../templates/" + name, function (template) {
         html = Mustache.to_html(template, []);
         $('#place_holder').html(html);
+    });
+}
+
+function bind_action_btns() {
+    $(document).delegate("div", "click", function () {
+        window.location = $(this).find("a").attr("href");
     });
 }
