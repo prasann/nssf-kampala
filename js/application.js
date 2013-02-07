@@ -17,7 +17,7 @@ $(document).ready(function () {
                     $.get("../templates/transactions.html", function (template) {
                         html = Mustache.render(template, data);
                         $('#place_holder').html(html);
-                    },"text");
+                    }, "text");
                 },
                 error: function (XHR, textStatus, errorThrown) {
                     console.log(errorThrown);
@@ -57,10 +57,4 @@ function getTemplate(name) {
         html = Mustache.render(template, true);
         $('#place_holder').html(html);
     }, "text");
-}
-
-function bind_action_btns() {
-    $(document).delegate("div", "click", function () {
-        window.location = $(this).find("a").attr("href");
-    });
 }
