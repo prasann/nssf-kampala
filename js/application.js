@@ -9,14 +9,19 @@ $(document).ready(function () {
         map(this, '#/action', 'action.html');
         map(this, '#/account', 'account.html');
         this.get('#/transactions', function () {
-            $.getJSON("http://nssf-spike.herokuapp.com/api/transactions?username=james&password=james", function (data) {
-                console.log(data);
-                 
-                
-                $.get("../templates/transactions.html" , function (template) {
-                    html = Mustache.to_html(template,data);
-                    $('#place_holder').html(html);
-                });
+            $.ajax({
+                dataType: "json",
+                url: "http://nssf-spike.herokuapp.com/api/transactions?username=james&password=james",
+                success: function (data) {
+                    console.log(data);
+                    $.get("../templates/transactions.html", function (template) {
+                        html = Mustache.render(template, data);
+                        $('#place_holder').html(html);
+                    },"text");
+                },
+                error: function (XHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
             });
         });
         this.get('#/register_btn', function () {
@@ -48,16 +53,10 @@ function loadPage(name) {
 }
 
 function getTemplate(name) {
-    var template = $(name).html();
-    var html = '';
     $.get("../templates/" + name, function (template) {
-      try {
-        html = Mustache.render(template, []);
+        html = Mustache.render(template, true);
         $('#place_holder').html(html);
-      }catch(ex){
-      alert(ex);
-      }
-    });
+    }, "text");
 }
 
 function bind_action_btns() {
