@@ -8,7 +8,17 @@ $(document).ready(function () {
         });
         map(this, '#/action', 'action.html');
         map(this, '#/account', 'account.html');
-        map(this, '#/transactions', 'transactions.html');
+        this.get('#/transactions', function () {
+            $.getJSON("http://nssf-spike.herokuapp.com/api/transactions?username=james&password=james", function (data) {
+                console.log(data);
+                 
+                
+                $.get("../templates/transactions.html" , function (template) {
+                    html = Mustache.to_html(template,data);
+                    $('#place_holder').html(html);
+                });
+            });
+        });
         this.get('#/register_btn', function () {
             var mail_to = "mailto:prasann@thoughtworks.com";
             var subject = "NSSF Registration";
