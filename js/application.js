@@ -51,8 +51,12 @@ function getTemplate(name) {
     var template = $(name).html();
     var html = '';
     $.get("../templates/" + name, function (template) {
-        html = Mustache.to_html(template, []);
+      try {
+        html = Mustache.render(template, []);
         $('#place_holder').html(html);
+      }catch(ex){
+      alert(ex);
+      }
     });
 }
 
