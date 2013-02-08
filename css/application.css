@@ -81,3 +81,19 @@ td:last-child {
     height:100%;
     overflow-y:auto;
 }
+.back-arrow{
+    font-size:120%;
+    font-weight:bold;
+    float:left;
+}
+.back-arrow i{
+    margin-top:3px;
+}
+.back-arrow a{
+    color:#ffffff;
+}
+.page-heading{
+    margin-left:5%;
+    float:left;
+    clear:right;
+}

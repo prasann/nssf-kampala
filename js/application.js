@@ -15,20 +15,19 @@ $(document).ready(function () {
         this.get('#/account', function () {
             if (supports_html5_storage()) {
                 user_data = JSON.parse(localStorage.getItem("user_data"));
-                console.log(user_data);
                 getTemplate('account.html', user_data);
             } else {
                 doesnot_support_storage();
             }
+            $('#logo_container').hide();
         });
         this.get('#/transactions', function () {
             $.getJSON("http://nssf-spike.herokuapp.com/api/transactions", {
                 username: "james",
                 password: "james"
             }, function (data) {
-                console.log(data);
-                getTemplate('transactions.html', user_data);
-
+                getTemplate('transactions.html', data);
+                $('#logo_container').hide();
             });
         });
         this.get('#/register_btn', function () {
