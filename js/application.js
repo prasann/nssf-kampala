@@ -1,20 +1,19 @@
-$(document).ready(function() {
-
+$(document).ready(function () {
     supports_html5_storage();
-    var app = Sammy('body', function() {
-        this.get('#/login', function() {
+    var app = Sammy('body', function () {
+        this.get('#/login', function () {
             loadPage('login.html');
         });
-        this.get('#/register', function() {
+        this.get('#/register', function () {
             loadPage('register.html');
         });
 
 
-        this.get('#/action', function() {
+        this.get('#/action', function () {
             loadPage('action.html');
         });
-        this.get('#/account', function() {
-            if(supports_html5_storage()) {
+        this.get('#/account', function () {
+            if (supports_html5_storage()) {
                 user_data = JSON.parse(localStorage.getItem("user_data"));
                 console.log(user_data);
                 getTemplate('account.html', user_data);
@@ -22,21 +21,21 @@ $(document).ready(function() {
                 doesnot_support_storage();
             }
         });
-        this.get('#/transactions', function() {
+        this.get('#/transactions', function () {
             $.getJSON("http://nssf-spike.herokuapp.com/api/transactions", {
                 username: "james",
                 password: "james"
-            }, function(data) {
+            }, function (data) {
                 console.log(data);
                 getTemplate('transactions.html', user_data);
 
             });
         });
-        this.get('#/register_btn', function() {
+        this.get('#/register_btn', function () {
             var mail_to = "mailto:prasann@thoughtworks.com";
             var subject = "NSSF Registration";
             var body = "";
-            $.each($('#register_form').serializeArray(), function(i, elem) {
+            $.each($('#register_form').serializeArray(), function (i, elem) {
                 body += elem["name"] + ": ";
                 body += elem["value"] + "%0D";
             });
@@ -45,31 +44,28 @@ $(document).ready(function() {
             return true;
         });
     });
-    $(function() {
+    $(function () {
         app.run('#/login');
     });
 });
 
 function map(_this, route, template) {
-    _this.get(route, function() {
+    _this.get(route, function () {
         loadPage(template);
     });
-};
+}
 
 function loadPage(name) {
     getTemplate(name, []);
 }
 
-
-
 function getTemplate(name, data) {
-
-    $.get("../templates/" + name, function(template) {
+    $.get("../templates/" + name, function (template) {
         try {
             html = Mustache.render(template, data);
             $('#place_holder').html(html);
             bind_login_btn();
-        } catch(ex) {
+        } catch (ex) {
             alert(ex);
         }
     });
@@ -77,17 +73,17 @@ function getTemplate(name, data) {
 
 
 function bind_login_btn() {
-    $('#login_btn').on('click', function() {
+    $('#login_btn').on('click', function () {
         var username = $('input#username').val();
         var password = $('input#password').val();
         $.getJSON("http://nssf-spike.herokuapp.com/api/authenticate", {
             username: username,
             password: password
-        }, function(data_from_server) {
-            if(data_from_server.result) {
+        }, function (data_from_server) {
+            if (data_from_server.result) {
                 alert('Login successful');
                 getTemplate("action.html", data_from_server);
-                if(supports_html5_storage()) {
+                if (supports_html5_storage()) {
                     localStorage.setItem("user_data", JSON.stringify(data_from_server.data));
                 } else {
                     doesnot_support_storage();
@@ -103,13 +99,6 @@ function bind_login_btn() {
     });
 }
 
-
-function bind_action_btns() {
-    $(document).delegate("div", "click", function() {
-        window.location = $(this).find("a").attr("href");
-    });
-}
-
 function doesnot_support_storage() {
     alert('doesnot_support_storage');
 }
@@ -117,7 +106,7 @@ function doesnot_support_storage() {
 function supports_html5_storage() {
     try {
         return 'localStorage' in window && window['localStorage'] !== null;
-    } catch(e) {
+    } catch (e) {
         return false;
     }
 }
