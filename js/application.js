@@ -9,6 +9,7 @@ $(document).ready(function() {
             loadPage('register.html');
         });
 
+
         this.get('#/action', function() {
             loadPage('action.html');
         });
@@ -17,10 +18,10 @@ $(document).ready(function() {
                 user_data = JSON.parse(localStorage.getItem("user_data"));
                 console.log(user_data);
                 getTemplate('account.html', user_data);
-                } else {
-                    doesnot_support_storage();
-                }
-            });
+            } else {
+                doesnot_support_storage();
+            }
+        });
         this.get('#/transactions', function() {
             $.getJSON("http://nssf-spike.herokuapp.com/api/transactions", {
                 username: "james",
@@ -28,6 +29,7 @@ $(document).ready(function() {
             }, function(data) {
                 console.log(data);
                 getTemplate('transactions.html', user_data);
+
             });
         });
         this.get('#/register_btn', function() {
@@ -42,11 +44,11 @@ $(document).ready(function() {
             $('#register_btn').attr('href', href);
             return true;
         });
-        });
+    });
     $(function() {
         app.run('#/login');
     });
-    });
+});
 
 function map(_this, route, template) {
     _this.get(route, function() {
@@ -57,6 +59,8 @@ function map(_this, route, template) {
 function loadPage(name) {
     getTemplate(name, []);
 }
+
+
 
 function getTemplate(name, data) {
 
@@ -85,36 +89,35 @@ function bind_login_btn() {
                 getTemplate("action.html", data_from_server);
                 if(supports_html5_storage()) {
                     localStorage.setItem("user_data", JSON.stringify(data_from_server.data));
-                    } else {
-                        doesnot_support_storage();
-                    }
                 } else {
-                    alert('Login failed try again');
-                    $('input#username').val('');
-                    $('input#password').val('');
+                    doesnot_support_storage();
                 }
-            });
+            } else {
+                alert('Login failed try again');
+                $('input#username').val('');
+                $('input#password').val('');
+            }
+        });
         return false;
 
-        });
-    }
+    });
+}
 
-    
 
-    function bind_action_btns() {
-        $(document).delegate("div", "click", function() {
-            window.location = $(this).find("a").attr("href");
-        });
-    }
+function bind_action_btns() {
+    $(document).delegate("div", "click", function() {
+        window.location = $(this).find("a").attr("href");
+    });
+}
 
-    function doesnot_support_storage() {
-        alert('doesnot_support_storage');
+function doesnot_support_storage() {
+    alert('doesnot_support_storage');
+}
+
+function supports_html5_storage() {
+    try {
+        return 'localStorage' in window && window['localStorage'] !== null;
+    } catch(e) {
+        return false;
     }
-    
-    function supports_html5_storage() {
-        try {
-            return 'localStorage' in window && window['localStorage'] !== null;
-        } catch(e) {
-            return false;
-        }
-    }
+}

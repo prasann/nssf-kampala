@@ -53,11 +53,14 @@ a:hover{
 
 a.fill-div {
     padding-top:20px;
-    padding-bottom:20px;
+    line-hight:3;
     color:#ffffff;
     display: block;
     height: 100%;
     width: 100%;
     text-decoration: none;
+}
+.center{
+    margin-left:20%;
 }
 
