@@ -1,46 +1,40 @@
-body{
-    background-color:#014397;  
+body {
+    background-color:#014397;
 }
-.app-header{
+.app-header {
     color:white;
 }
-a:hover{
+a:hover {
     text-decoration:none;
     color: black;
 }
-.logo{
+.logo {
     padding: 10px;
 }
-
-#login_btn{
+#login_btn {
     margin-top:10px;
     margin-bottom:15px;
 }
-
 #register_links {
     font-size:120%;
     color: #ffffff;
 }
-
-#register_links a{
+#register_links a {
     color: #51a351;
     text-decoration:underline;
 }
-
-.separator{
+.separator {
     margin-left:5px;
-    margin-right:5px; 
+    margin-right:5px;
 }
-
-#register_links a:hover{
+#register_links a:hover {
     color: #ffffff;
 }
-
-.button{
-    border:2px solid #418241; 
+.button {
+    border:2px solid #418241;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    background:#51a351; 
+    background:#51a351;
     margin-top:25px;
     height:60px;
     width:100%;
@@ -48,9 +42,8 @@ a:hover{
     font-size:130%;
     color:#ffffff;
     font-weight:bold;
-    box-shadow: 0px 0px 15px #97C897;     
+    box-shadow: 0px 0px 15px #97C897;
 }
-
 a.fill-div {
     padding-top:20px;
     line-hight:3;
@@ -60,7 +53,31 @@ a.fill-div {
     width: 100%;
     text-decoration: none;
 }
-.center{
+.center {
     margin-left:20%;
 }
-
+table {
+    background-color:white;
+    width :100%;
+    border-radius: 10px 10px 10px 10px;
+    height:40px;
+    border-color:#000000;
+    border-style:none;
+}
+td {
+    padding:5px;
+    height:40px;
+    box-shadow: 0 6px 2px -3px rgba(0, 0, 0, 0.5) inset;
+}
+td:first-child {
+    border-radius: 5px 0 0 5px;
+    box-shadow: 4px 6px 2px -3px rgba(0, 0, 0, 0.5) inset;
+}
+td:last-child {
+    border-radius: 0 5px 5px 0;
+    box-shadow: 0 6px 2px -3px rgba(0, 0, 0, 0.5) inset;
+}
+#transaction_table {
+    height:100%;
+    overflow-y:auto;
+}

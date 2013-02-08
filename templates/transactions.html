@@ -1,9 +1,17 @@
-<table>
-    {{#data}}
-    <tr>
-        <td>{{date}}</td>
-        <td>{{transaction_detail}}</td>
-        <td>{{amount}}</td>
-    </tr>
-    {{/data}}
-</table>
+<div id="transaction_table">
+    <table>
+        {{#data}}
+        <tr>
+            <td>
+                {{date}}
+            </td>
+            <td>
+                {{transaction_detail}}
+            </td>
+            <td>
+                {{amount}}
+            </td>
+        </tr>
+        {{/data}}
+    </table>
+</div>
