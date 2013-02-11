@@ -3,61 +3,56 @@
         <a href="#/action">
             <i class="icon-white icon-chevron-left">
             </i>
-                Back
+            Back
         </a>
     </div>
-    
+
     <div class="page-heading">
         <h4>
-            <a id="home" class="app-header" href="#/login">
-                Transaction History
+            <a id="home" class="app-header" href="#">
+                My Account
             </a>
         </h4>
-        
+
     </div>
 </div>
 <p class="clearfix"/>
-<div class="offset1">
-    <div>
-        <img class="media-object" src="../images/profile.gif" />
+<div id="accounts_page">
+    <div class="center_text">
+        <h3>
+            Balance : {{balance}} UGX
+        </h3>
     </div>
-     <h4>
-        ACCOUNT BALANCE
-    </h4>
-
-     <h3>
-        {{ balance }}
-    </h3>
-UGX</div>
-<div> <span>
+    <div> <span class="title">
         Name:
     </span>
- <span>
+ <span class="value">
         {{first_name}} {{last_name}}
     </span>
 
-</div>
-<div> <span>
+    </div>
+    <div> <span class="title">
         NSSF No:
     </span>
- <span>
+ <span class="value">
         {{ nssf_number}}
     </span>
 
-</div>
-<div> <span>
-        Address
+    </div>
+    <div> <span class="title">
+        Address:
     </span>
- <span>
+ <span class="value">
         {{address}}
     </span>
 
-</div>
-<div> <span>
-        Period
+    </div>
+    <div> <span class="title">
+        Period:
     </span>
- <span>
+ <span class="value">
         31 June 1995 - 20 May 2015
     </span>
 
+    </div>
 </div>

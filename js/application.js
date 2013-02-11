@@ -56,6 +56,8 @@ function map(_this, route, template) {
 
 function loadPage(name) {
     getTemplate(name, []);
+    $('#logo_container').show();
+
 }
 
 function getTemplate(name, data) {
@@ -67,7 +69,7 @@ function getTemplate(name, data) {
         } catch (ex) {
             alert(ex);
         }
-    });
+    },"text");
 }
 
 
@@ -80,7 +82,6 @@ function bind_login_btn() {
             password: password
         }, function (data_from_server) {
             if (data_from_server.result) {
-                alert('Login successful');
                 getTemplate("action.html", data_from_server);
                 if (supports_html5_storage()) {
                     localStorage.setItem("user_data", JSON.stringify(data_from_server.data));

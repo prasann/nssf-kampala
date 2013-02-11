@@ -93,7 +93,26 @@ td:last-child {
     color:#ffffff;
 }
 .page-heading{
+    text-align:center;
     margin-left:5%;
     float:left;
     clear:right;
+}
+#accounts_page{
+    color:#ffffff;
+}
+#accounts_page .center_text{
+    text-align:center;
+}
+#accounts_page div{
+    margin-top:20px;
+}
+#accounts_page .title{
+    font-weight:bold;
+    color:#cccccc;
+}
+
+#accounts_page .value{
+    font-size:120%;
+    color:#ffffff;
 }
