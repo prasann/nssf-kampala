@@ -59,9 +59,8 @@ a.fill-div {
 table {
     background-color:white;
     width :100%;
-    border-radius: 10px 10px 10px 10px;
     height:40px;
-    border-color:#000000;
+    border-color:#014397;
     border-style:none;
 }
 td {
@@ -70,11 +69,9 @@ td {
     box-shadow: 0 6px 2px -3px rgba(0, 0, 0, 0.5) inset;
 }
 td:first-child {
-    border-radius: 5px 0 0 5px;
     box-shadow: 4px 6px 2px -3px rgba(0, 0, 0, 0.5) inset;
 }
 td:last-child {
-    border-radius: 0 5px 5px 0;
     box-shadow: 0 6px 2px -3px rgba(0, 0, 0, 0.5) inset;
 }
 #transaction_table {
